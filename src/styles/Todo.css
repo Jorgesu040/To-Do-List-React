@@ -1,0 +1,114 @@
+.todo-container {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    min-height: 60px;
+    overflow: hidden;
+    opacity: 1;
+    transform: translateX(0);
+    max-height: 200px;
+    transition: all 0.5s ease;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateX(-400px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+@keyframes fadeOut {
+    from { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+    to { 
+        opacity: 0; 
+        transform: translateX(400px); 
+    }
+}
+
+.todo-container.removing {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+.todo-container:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.todo-text {
+    flex-grow: 1;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 1.25rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    transition: opacity 0.3s ease;
+    user-select: none;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.todo-text:hover {
+    opacity: 0.8;
+}
+
+.todo-icon-container {
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.todo-icon-container:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.todo-icon-container:hover .todo-icon {
+    transform: rotate(180deg);
+    color: #ff0000;
+}
+
+.todo-icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.todo-container:nth-child(3n + 2) {
+    background-color: #1b1b32;
+}
+
+.todo-container:nth-child(3n + 3) {
+    background-color: #2a2a40;
+}
+
+.todo-container:nth-child(3n + 4) {
+    background-color: #3b3b4f;
+}
+
+.todo-container.completed {
+    background-color: #5a01a7;
+    opacity: 0.7;
+}
+
+.todo-container.completed .todo-text {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+
