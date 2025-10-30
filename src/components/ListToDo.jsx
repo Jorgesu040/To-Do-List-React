@@ -1,12 +1,21 @@
 import FormToDo from "./FormToDo"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ToDo from "./ToDo"
 import TodoCounter from "./TodoCounter"
 import '../styles/ListToDo.css'
 
 function ListToDo() {
 
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState(() => {
+        // Cargar tareas desde localStorage al inicializar
+        const savedTasks = localStorage.getItem('todos')
+        return savedTasks ? JSON.parse(savedTasks) : []
+    })
+
+    // Guardar tareas en localStorage cada vez que cambien 
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(tasks))
+    }, [tasks])
 
     const addTask = (task) => {
         //trim() quita los espacios del principio y final.
